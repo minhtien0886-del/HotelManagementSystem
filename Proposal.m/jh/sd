@@ -1,8 +1,66 @@
-# Introducing Members
+classDiagram
+    class RoomType {
+        int id
+        String name
+        int maxGuest
+        double basePrice
+    }
 
-1. name 1  
-2. name 2  
+    class Room {
+        int id
+        String number
+        RoomType type
+        double price
+        boolean available
+    }
 
-## Project Introduction
+    class Customer {
+        int id
+        String name
+    }
 
-## Instructions for Running a JAR File
+    class Booking {
+        int id
+        Customer customer
+        Room room
+        LocalDate in
+        LocalDate out
+        long nights()
+        double roomCost()
+    }
+
+    class Service {
+        int id
+        String name
+        double price
+    }
+
+    class ServiceUsage {
+        Booking booking
+        Service service
+        int quantity
+        double cost()
+    }
+
+    class Invoice {
+        int id
+        Booking booking
+        double roomCost
+        double serviceCost
+        double totalAmount
+    }
+
+    class Payment {
+        int id
+        Invoice invoice
+        String method
+    }
+
+    Room --> RoomType
+    Booking --> Customer
+    Booking --> Room
+    ServiceUsage --> Booking
+    ServiceUsage --> Service
+    Invoice --> Booking
+    Invoice --> ServiceUsage
+    Payment --> Invoice
