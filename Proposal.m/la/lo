@@ -1,1 +1,9 @@
+```mermaid
+flowchart TD
+    A[Start] --> B[Login]
+    B --> C{Đúng tài khoản?}
+    C -- Không --> B
+    C -- Có --> D[Đặt phòng]
+    D --> E[Thanh toán]
+    E --> F[End]
 
