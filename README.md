@@ -1,3 +1,4 @@
+``` mermaid
 flowchart TD
     A[Bắt đầu] --> B[Khách hàng đến / yêu cầu đặt phòng]
 
