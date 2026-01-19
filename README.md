@@ -1,8 +1,36 @@
 ```mermaid
 flowchart TD
-    A[Start] --> B[Login]
-    B --> C{Đúng tài khoản?}
+    A[Start] --> B[Employee đăng nhập Account]
+    B --> C{Đăng nhập hợp lệ?}
     C -- Không --> B
-    C -- Có --> D[Đặt phòng]
-    D --> E[Thanh toán]
-    E --> F[End]
+    C -- Có --> D[Quản lý RoomType]
+    D --> E[Quản lý Room]
+
+    E --> F[Khách hàng đến / yêu cầu đặt phòng]
+    F --> G[Tạo Customer]
+    G --> H[Tạo Booking]
+
+    H --> I{Phòng còn trống?}
+    I -- Không --> E
+    I -- Có --> J[Booking trạng thái: Booked]
+
+    J --> K[Khách Check-in]
+    K --> L[Booking trạng thái: Checked-in]
+    L --> M[Cập nhật Room.isAvailable = false]
+
+    M --> N{Khách dùng dịch vụ?}
+    N -- Có --> O[Ghi ServiceUsage]
+    O --> N
+    N -- Không --> P[Khách Check-out]
+
+    P --> Q[Booking trạng thái: Checked-out]
+    Q --> R[Tạo Invoice]
+    R --> S[Tính roomCost + serviceCost]
+    S --> T[Tạo Payment]
+
+    T --> U{Thanh toán thành công?}
+    U -- Không --> T
+    U -- Có --> V[Payment status: Success]
+
+    V --> W[Cập nhật Room.isAvailable = true]
+    W --> X[End]
