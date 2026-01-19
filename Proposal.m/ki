@@ -1,4 +1,4 @@
-
+```mermaid
 flowchart TD
     A[Start] --> B[Employee đăng nhập Account]
     B --> C{Đăng nhập hợp lệ?}
