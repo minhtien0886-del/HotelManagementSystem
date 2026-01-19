@@ -1,14 +1,15 @@
-
----
-
-## ✅ PHIÊN BẢN MERMAID CHUẨN 100%
-
-```md
-```mermaid
-flowchart TD
-    A[Start] --> B[Login]
-    B --> C{Đúng tài khoản?}
-    C --|Không|--> B
-    C --|Có|--> D[Đặt phòng]
-    D --> E[Thanh toán]
-    E --> F[End]
+[Bắt đầu]
+   ↓
+Hiển thị message
+   ↓
+Người dùng nhập dữ liệu
+   ↓
+Có phải số?
+ ┌──Không─────┐
+ │ In lỗi     │
+ │ Nhập lại   │
+ └────────────┘
+   ↓ Có
+Trả về giá trị
+   ↓
+[Kết thúc]
