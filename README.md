@@ -1,36 +1,29 @@
-```mermaid
 flowchart TD
-    A[Start] --> B[Employee đăng nhập Account]
-    B --> C{Đăng nhập hợp lệ?}
-    C -- Không --> B
-    C -- Có --> D[Quản lý RoomType]
-    D --> E[Quản lý Room]
+    A[Bắt đầu] --> B[Khách hàng đến / yêu cầu đặt phòng]
 
-    E --> F[Khách hàng đến / yêu cầu đặt phòng]
-    F --> G[Tạo Customer]
-    G --> H[Tạo Booking]
+    B --> C[Nhập thông tin Customer]
+    C --> D[Chọn RoomType]
+    D --> E{Room còn trống?}
 
-    H --> I{Phòng còn trống?}
-    I -- Không --> E
-    I -- Có --> J[Booking trạng thái: Booked]
+    E -- Không --> D
+    E -- Có --> F[Tạo Booking]
 
-    J --> K[Khách Check-in]
-    K --> L[Booking trạng thái: Checked-in]
-    L --> M[Cập nhật Room.isAvailable = false]
+    F --> G[Cập nhật trạng thái Room = Not Available]
+    G --> H[Khách Check-in]
 
-    M --> N{Khách dùng dịch vụ?}
-    N -- Có --> O[Ghi ServiceUsage]
-    O --> N
-    N -- Không --> P[Khách Check-out]
+    H --> I{Sử dụng dịch vụ?}
+    I -- Có --> J[Ghi ServiceUsage]
+    J --> I
+    I -- Không --> K[Khách Check-out]
 
-    P --> Q[Booking trạng thái: Checked-out]
-    Q --> R[Tạo Invoice]
-    R --> S[Tính roomCost + serviceCost]
-    S --> T[Tạo Payment]
+    K --> L[Tạo Invoice]
+    L --> M[Tính roomCost + serviceCost]
+    M --> N[Tổng totalAmount]
 
-    T --> U{Thanh toán thành công?}
-    U -- Không --> T
-    U -- Có --> V[Payment status: Success]
+    N --> O[Thanh toán Payment]
+    O --> P{Thanh toán thành công?}
 
-    V --> W[Cập nhật Room.isAvailable = true]
-    W --> X[End]
+    P -- Không --> O
+    P -- Có --> Q[Cập nhật Booking = Checked-out]
+    Q --> R[Cập nhật Room = Available]
+    R --> S[Kết thúc]
