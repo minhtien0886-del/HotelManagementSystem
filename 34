@@ -1,1 +1,10 @@
 
+---------------------------------------
+|             Employee                |
+---------------------------------------
+| - employeeId : int                  |
+| - fullName : String                 |
+| - position : String                 |
+| - salary : double                   |
+| - phone : String                    |
+---------------------------------------
